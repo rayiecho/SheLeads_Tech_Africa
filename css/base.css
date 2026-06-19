@@ -1,0 +1,299 @@
+/* ============================================
+   SHE LEADS TECH AFRICA — DESIGN TOKENS & BASE
+   ============================================ */
+
+@import url('https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&family=Inter:wght@400;500;600;700;800&family=Space+Grotesk:wght@500;600&display=swap');
+
+:root {
+  /* Brand colors, drawn directly from the logo gradient */
+  --magenta: #C81E5C;
+  --magenta-deep: #A3144A;
+  --navy: #1B2D6B;
+  --navy-deep: #131F4D;
+  --violet: #6B2D8C;
+  --slate: #6B7280;
+  --slate-light: #9CA3AF;
+  --cream: #FBF9FB;
+  --cream-deep: #F3EEF4;
+  --ink: #1A1A2E;
+  --white: #FFFFFF;
+
+  /* Gradient, matching the continent silhouette */
+  --gradient-brand: linear-gradient(160deg, var(--magenta) 0%, var(--violet) 50%, var(--navy) 100%);
+  --gradient-brand-soft: linear-gradient(160deg, rgba(200,30,92,0.08) 0%, rgba(107,45,140,0.08) 50%, rgba(27,45,107,0.08) 100%);
+  --gradient-text: linear-gradient(100deg, var(--magenta) 0%, var(--violet) 60%, var(--navy) 100%);
+
+  /* Type */
+  --font-display: 'Fraunces', serif;
+  --font-body: 'Inter', sans-serif;
+  --font-label: 'Space Grotesk', sans-serif;
+
+  /* Spacing scale */
+  --space-xs: 0.5rem;
+  --space-sm: 1rem;
+  --space-md: 1.75rem;
+  --space-lg: 3rem;
+  --space-xl: 5rem;
+  --space-2xl: 8rem;
+
+  /* Radii & shadow */
+  --radius-sm: 8px;
+  --radius-md: 16px;
+  --radius-lg: 28px;
+  --shadow-soft: 0 8px 30px rgba(27, 45, 107, 0.08);
+  --shadow-card: 0 4px 20px rgba(27, 45, 107, 0.06);
+
+  --max-width: 1240px;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+body {
+  font-family: var(--font-body);
+  color: var(--ink);
+  background: var(--cream);
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
+}
+
+img {
+  max-width: 100%;
+  display: block;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+ul {
+  list-style: none;
+}
+
+button {
+  font-family: inherit;
+  cursor: pointer;
+  border: none;
+  background: none;
+}
+
+input, textarea, select {
+  font-family: inherit;
+  font-size: inherit;
+}
+
+.container {
+  max-width: var(--max-width);
+  margin: 0 auto;
+  padding: 0 1.5rem;
+}
+
+/* Focus visibility — never sacrifice this for aesthetics */
+a:focus-visible,
+button:focus-visible,
+input:focus-visible,
+textarea:focus-visible,
+select:focus-visible {
+  outline: 2.5px solid var(--magenta);
+  outline-offset: 3px;
+  border-radius: 4px;
+}
+
+/* ============ TYPOGRAPHY ============ */
+
+h1, h2, h3, h4 {
+  font-family: var(--font-display);
+  color: var(--ink);
+  line-height: 1.15;
+  font-weight: 600;
+  letter-spacing: -0.01em;
+}
+
+h1 { font-size: clamp(2.5rem, 5vw, 4rem); }
+h2 { font-size: clamp(2rem, 3.5vw, 2.85rem); }
+h3 { font-size: clamp(1.3rem, 2vw, 1.6rem); }
+h4 { font-size: 1.15rem; }
+
+p {
+  color: var(--slate);
+  font-size: 1.05rem;
+}
+
+.eyebrow {
+  font-family: var(--font-label);
+  font-size: 0.78rem;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--magenta);
+  display: inline-flex;
+  align-items: center;
+  gap: 0.55rem;
+}
+
+.eyebrow::before {
+  content: '';
+  width: 18px;
+  height: 1.5px;
+  background: var(--magenta);
+  display: inline-block;
+}
+
+.text-gradient {
+  background: var(--gradient-text);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+/* ============ BUTTONS ============ */
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  padding: 0.85rem 1.75rem;
+  border-radius: 100px;
+  font-family: var(--font-body);
+  font-weight: 600;
+  font-size: 0.95rem;
+  transition: transform 0.25s ease, box-shadow 0.25s ease, background 0.25s ease;
+  white-space: nowrap;
+}
+
+.btn-primary {
+  background: var(--gradient-brand);
+  color: var(--white);
+  box-shadow: 0 6px 20px rgba(200, 30, 92, 0.25);
+}
+
+.btn-primary:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 28px rgba(200, 30, 92, 0.32);
+}
+
+.btn-outline {
+  background: transparent;
+  color: var(--navy);
+  border: 1.5px solid var(--navy);
+}
+
+.btn-outline:hover {
+  background: var(--navy);
+  color: var(--white);
+}
+
+.btn-ghost {
+  color: var(--navy);
+  font-weight: 600;
+  padding: 0.85rem 0.5rem;
+}
+
+.btn-ghost::after {
+  content: '→';
+  margin-left: 0.4rem;
+  transition: transform 0.25s ease;
+  display: inline-block;
+}
+
+.btn-ghost:hover::after {
+  transform: translateX(4px);
+}
+
+.btn-sm {
+  padding: 0.6rem 1.3rem;
+  font-size: 0.85rem;
+}
+
+/* ============ CIRCUIT DIVIDER — signature element ============ */
+/* Echoes the branching circuit lines from the logo's brain/continent motif */
+
+.circuit-divider {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto;
+  width: 100%;
+  max-width: 280px;
+  height: 24px;
+}
+
+.circuit-divider svg {
+  width: 100%;
+  height: 100%;
+  overflow: visible;
+}
+
+.circuit-divider .node {
+  fill: var(--magenta);
+}
+
+.circuit-divider .line {
+  stroke: var(--slate-light);
+  stroke-width: 1.5;
+  fill: none;
+}
+
+/* ============ SECTION SPACING ============ */
+
+.section {
+  padding: var(--space-2xl) 0;
+}
+
+.section-tight {
+  padding: var(--space-xl) 0;
+}
+
+.section-header {
+  max-width: 640px;
+  margin-bottom: var(--space-lg);
+}
+
+.section-header.center {
+  margin-left: auto;
+  margin-right: auto;
+  text-align: center;
+}
+
+.section-header h2 {
+  margin-top: 0.6rem;
+}
+
+/* ============ SKIP LINK ============ */
+
+.skip-link {
+  position: absolute;
+  left: -999px;
+  top: 1rem;
+  background: var(--ink);
+  color: var(--white);
+  padding: 0.6rem 1.2rem;
+  border-radius: var(--radius-sm);
+  z-index: 200;
+}
+
+.skip-link:focus {
+  left: 1rem;
+}
