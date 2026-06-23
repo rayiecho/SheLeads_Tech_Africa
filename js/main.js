@@ -195,4 +195,175 @@ document.addEventListener('DOMContentLoaded', function () {
 
     renderStep();
   }
+
+  // Contact page — inquiry quick-link cards sync with form select (front-end only)
+  const inquiryCards = document.querySelectorAll('[data-inquiry-type]');
+  const inquirySelect = document.getElementById('contact-inquiry-type');
+  if (inquiryCards.length && inquirySelect) {
+    function selectInquiryCard(card) {
+      inquiryCards.forEach(function (c) { c.classList.remove('selected'); });
+      card.classList.add('selected');
+      inquirySelect.value = card.getAttribute('data-inquiry-type');
+      document.getElementById('contact-form-card-anchor').scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+    inquiryCards.forEach(function (card) {
+      card.addEventListener('click', function () { selectInquiryCard(card); });
+      card.addEventListener('keydown', function (e) {
+        if (e.key === 'Enter' || e.key === ' ') {
+          e.preventDefault();
+          selectInquiryCard(card);
+        }
+      });
+    });
+  }
+
+  // Contact form submission (front-end only placeholder — no backend yet)
+  const contactForm = document.getElementById('contact-form');
+  if (contactForm) {
+    contactForm.addEventListener('submit', function (e) {
+      e.preventDefault();
+      const card = contactForm.closest('.contact-form-card');
+      const success = card.querySelector('.contact-success');
+      contactForm.style.display = 'none';
+      if (success) {
+        success.classList.add('show');
+        success.focus();
+      }
+    });
+  }
+
+  // Donate page — frequency toggle, amount selection, and honest preview modal (no real payment processing yet)
+  const donateForm = document.getElementById('donate-form');
+  if (donateForm) {
+    const freqButtons = document.querySelectorAll('.donate-toggle button');
+    const amountRadios = donateForm.querySelectorAll('input[name="donate-amount"]');
+    const customInput = document.getElementById('custom-amount');
+    const totalValue = document.getElementById('donate-total-value');
+    let currentFreq = 'once';
+
+    function getSelectedAmount() {
+      const customVal = parseFloat(customInput.value);
+      if (customVal > 0) return customVal;
+      const checked = donateForm.querySelector('input[name="donate-amount"]:checked');
+      return checked ? parseFloat(checked.value) : 0;
+    }
+
+    function updateTotal() {
+      const amount = getSelectedAmount();
+      const suffix = currentFreq === 'monthly' ? '/mo' : '';
+      totalValue.textContent = '$' + (amount > 0 ? amount.toFixed(0) : '0') + suffix;
+    }
+
+    freqButtons.forEach(function (btn) {
+      btn.addEventListener('click', function () {
+        freqButtons.forEach(function (b) { b.classList.remove('active'); });
+        btn.classList.add('active');
+        currentFreq = btn.getAttribute('data-freq');
+        updateTotal();
+      });
+    });
+
+    amountRadios.forEach(function (radio) {
+      radio.addEventListener('change', function () {
+        customInput.value = '';
+        updateTotal();
+      });
+    });
+
+    customInput.addEventListener('input', function () {
+      if (parseFloat(customInput.value) > 0) {
+        amountRadios.forEach(function (r) { r.checked = false; });
+      }
+      updateTotal();
+    });
+
+    updateTotal();
+
+    donateForm.addEventListener('submit', function (e) {
+      e.preventDefault();
+      const amount = getSelectedAmount();
+      if (amount <= 0) {
+        customInput.focus();
+        return;
+      }
+      const modal = document.getElementById('donate-preview-modal');
+      const modalAmount = modal.querySelector('.preview-modal-summary .amount');
+      const modalFreq = modal.querySelector('.preview-modal-summary .freq');
+      modalAmount.textContent = '$' + amount.toFixed(0);
+      modalFreq.textContent = currentFreq === 'monthly' ? 'Monthly donation' : 'One-time donation';
+      modal.classList.add('open');
+      document.body.style.overflow = 'hidden';
+    });
+
+    const previewModal = document.getElementById('donate-preview-modal');
+    if (previewModal) {
+      const closeBtn = previewModal.querySelector('.modal-close');
+      closeBtn.addEventListener('click', function () {
+        previewModal.classList.remove('open');
+        document.body.style.overflow = '';
+      });
+      previewModal.addEventListener('click', function (e) {
+        if (e.target === previewModal) {
+          previewModal.classList.remove('open');
+          document.body.style.overflow = '';
+        }
+      });
+    }
+  }
+
+  // Partnership application form (front-end only placeholder — no backend yet)
+  const partnerForm = document.getElementById('partner-apply-form');
+  if (partnerForm) {
+    partnerForm.addEventListener('submit', function (e) {
+      e.preventDefault();
+      const card = partnerForm.closest('.partner-form-card');
+      const success = card.querySelector('.partner-success');
+      partnerForm.style.display = 'none';
+      if (success) {
+        success.classList.add('show');
+        success.focus();
+      }
+    });
+  }
+
+  // Partnership tier "Apply" buttons pre-select the tier in the form
+  const tierSelect = document.getElementById('partner-tier-select');
+  document.querySelectorAll('[data-tier-apply]').forEach(function (btn) {
+    btn.addEventListener('click', function (e) {
+      e.preventDefault();
+      if (tierSelect) {
+        tierSelect.value = btn.getAttribute('data-tier-apply');
+      }
+      const formAnchor = document.getElementById('partner-apply-anchor');
+      if (formAnchor) formAnchor.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    });
+  });
+
+  // Executive application form (front-end only placeholder — no backend yet)
+  const execForm = document.getElementById('exec-apply-form');
+  if (execForm) {
+    execForm.addEventListener('submit', function (e) {
+      e.preventDefault();
+      const card = execForm.closest('.exec-form-card');
+      const success = card.querySelector('.exec-success');
+      execForm.style.display = 'none';
+      if (success) {
+        success.classList.add('show');
+        success.focus();
+      }
+    });
+  }
+
+  // Open role "Apply" buttons pre-select the role in the form
+  const roleSelect = document.getElementById('exec-role-select');
+  document.querySelectorAll('[data-role-apply]').forEach(function (btn) {
+    btn.addEventListener('click', function (e) {
+      e.preventDefault();
+      if (roleSelect) {
+        roleSelect.value = btn.getAttribute('data-role-apply');
+      }
+      const formAnchor = document.getElementById('exec-apply-anchor');
+      if (formAnchor) formAnchor.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    });
+  });
 });

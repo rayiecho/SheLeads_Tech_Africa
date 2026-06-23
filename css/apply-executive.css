@@ -1,0 +1,196 @@
+/* ============================================
+   APPLY AS EXECUTIVE PAGE
+   ============================================ */
+
+/* ---- OPEN ROLES LIST ---- */
+
+.role-list {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-md);
+}
+
+.role-card {
+  background: var(--white);
+  border-radius: var(--radius-lg);
+  padding: var(--space-md);
+  box-shadow: var(--shadow-card);
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  gap: var(--space-md);
+  align-items: center;
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.role-card:hover {
+  transform: translateY(-3px);
+  box-shadow: var(--shadow-soft);
+}
+
+.role-icon {
+  width: 52px;
+  height: 52px;
+  border-radius: var(--radius-sm);
+  background: var(--gradient-brand-soft);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.role-icon svg {
+  width: 24px;
+  height: 24px;
+  stroke: var(--magenta-deep);
+}
+
+.role-body h3 {
+  font-size: 1.1rem;
+  margin-bottom: 0.4rem;
+}
+
+.role-body p {
+  font-size: 0.92rem;
+  margin-bottom: 0.6rem;
+}
+
+.role-meta-row {
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.role-meta-row span {
+  font-size: 0.8rem;
+  color: var(--slate-light);
+  font-family: var(--font-label);
+  display: flex;
+  align-items: center;
+  gap: 0.35rem;
+}
+
+.role-meta-row svg {
+  width: 13px;
+  height: 13px;
+  stroke: var(--slate-light);
+  flex-shrink: 0;
+}
+
+.role-card .btn {
+  flex-shrink: 0;
+}
+
+@media (max-width: 700px) {
+  .role-card {
+    grid-template-columns: auto 1fr;
+  }
+  .role-card .btn {
+    grid-column: 1 / -1;
+    width: 100%;
+    justify-content: center;
+    margin-top: 0.5rem;
+  }
+}
+
+/* ---- WHAT WE LOOK FOR ---- */
+
+.expect-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--space-md);
+}
+
+.expect-item {
+  text-align: center;
+  padding: var(--space-md);
+}
+
+.expect-icon {
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  background: var(--white);
+  box-shadow: var(--shadow-card);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 1.1rem;
+}
+
+.expect-icon svg {
+  width: 24px;
+  height: 24px;
+  stroke: var(--magenta-deep);
+}
+
+.expect-item h4 {
+  margin-bottom: 0.5rem;
+}
+
+.expect-item p {
+  font-size: 0.92rem;
+}
+
+@media (max-width: 900px) {
+  .expect-grid {
+    grid-template-columns: 1fr;
+    max-width: 480px;
+    margin: 0 auto;
+  }
+}
+
+/* ---- EXECUTIVE APPLICATION FORM ---- */
+
+.exec-apply-section {
+  background: var(--cream-deep);
+  border-radius: var(--radius-lg);
+  padding: var(--space-lg);
+}
+
+.exec-form-card {
+  background: var(--white);
+  border-radius: var(--radius-lg);
+  padding: var(--space-lg);
+  box-shadow: var(--shadow-soft);
+  max-width: 640px;
+  margin: 0 auto;
+}
+
+.availability-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 0.7rem;
+}
+
+.exec-success {
+  display: none;
+  text-align: center;
+  padding: var(--space-lg) 0;
+}
+
+.exec-success.show {
+  display: block;
+}
+
+.exec-success-icon {
+  width: 64px;
+  height: 64px;
+  border-radius: 50%;
+  background: var(--gradient-brand-soft);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 1.2rem;
+}
+
+.exec-success-icon svg {
+  width: 30px;
+  height: 30px;
+  stroke: var(--magenta-deep);
+}
+
+@media (max-width: 560px) {
+  .availability-grid {
+    grid-template-columns: 1fr;
+  }
+}

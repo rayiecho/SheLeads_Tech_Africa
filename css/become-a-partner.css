@@ -1,0 +1,169 @@
+/* ============================================
+   BECOME A PARTNER PAGE
+   ============================================ */
+
+/* ---- LOGOS STRIP ---- */
+
+.partner-logos-strip {
+  text-align: center;
+  margin-bottom: var(--space-lg);
+}
+
+.partner-logos-strip p {
+  font-size: 0.85rem;
+  color: var(--slate-light);
+  margin-bottom: 1.1rem;
+  font-family: var(--font-label);
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+/* ---- PARTNERSHIP TIERS ---- */
+
+.tier-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--space-md);
+}
+
+.tier-card {
+  background: var(--white);
+  border-radius: var(--radius-lg);
+  padding: var(--space-lg);
+  box-shadow: var(--shadow-card);
+  display: flex;
+  flex-direction: column;
+  border: 2px solid transparent;
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.tier-card:hover {
+  transform: translateY(-5px);
+  box-shadow: var(--shadow-soft);
+}
+
+.tier-card.featured {
+  border-color: var(--magenta);
+  position: relative;
+}
+
+.tier-featured-badge {
+  position: absolute;
+  top: -13px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: var(--gradient-brand);
+  color: var(--white);
+  font-family: var(--font-label);
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  padding: 0.35rem 1rem;
+  border-radius: 100px;
+  white-space: nowrap;
+}
+
+.tier-name {
+  font-family: var(--font-label);
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: var(--magenta-deep);
+  margin-bottom: 0.6rem;
+}
+
+.tier-card h3 {
+  font-size: 1.4rem;
+  margin-bottom: 0.6rem;
+}
+
+.tier-card > p {
+  font-size: 0.92rem;
+  margin-bottom: 1.4rem;
+}
+
+.tier-benefits {
+  display: flex;
+  flex-direction: column;
+  gap: 0.7rem;
+  margin-bottom: 1.6rem;
+  flex-grow: 1;
+}
+
+.tier-benefits li {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.6rem;
+  font-size: 0.9rem;
+  color: var(--slate);
+}
+
+.tier-benefits svg {
+  width: 16px;
+  height: 16px;
+  stroke: var(--magenta-deep);
+  flex-shrink: 0;
+  margin-top: 2px;
+}
+
+.tier-card .btn {
+  width: 100%;
+  justify-content: center;
+}
+
+@media (max-width: 960px) {
+  .tier-grid {
+    grid-template-columns: 1fr;
+    max-width: 480px;
+    margin: 0 auto;
+  }
+  .tier-card.featured {
+    order: -1;
+  }
+}
+
+/* ---- PARTNERSHIP APPLICATION FORM (reuse apply-section pattern) ---- */
+
+.partner-apply-section {
+  background: var(--cream-deep);
+  border-radius: var(--radius-lg);
+  padding: var(--space-lg);
+}
+
+.partner-form-card {
+  background: var(--white);
+  border-radius: var(--radius-lg);
+  padding: var(--space-lg);
+  box-shadow: var(--shadow-soft);
+  max-width: 640px;
+  margin: 0 auto;
+}
+
+.partner-success {
+  display: none;
+  text-align: center;
+  padding: var(--space-lg) 0;
+}
+
+.partner-success.show {
+  display: block;
+}
+
+.partner-success-icon {
+  width: 64px;
+  height: 64px;
+  border-radius: 50%;
+  background: var(--gradient-brand-soft);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 1.2rem;
+}
+
+.partner-success-icon svg {
+  width: 30px;
+  height: 30px;
+  stroke: var(--magenta-deep);
+}
